@@ -13,6 +13,10 @@ app.get("/api/user", async (req, reply) => {
 app.post("/api/user", async (req, reply) => {
   const { name, age } = req.body as any;
 
+  if (!name){
+    return reply.status(400).send({ message: "É obrigatório informar nome" });
+  }
+
   if (!age){
       return reply.status(400).send({ message: "É obrigatório informar idade" });
 }
