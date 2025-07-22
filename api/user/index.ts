@@ -17,12 +17,12 @@ app.get("/api/users", async (req, reply) => {
 
 app.post("/api/user", async (req, reply) => {
     const { name, age } = req.body as any;
-    const users = prisma.user.create({
+    const user = prisma.user.create({
         data: {
             name, age
         }
     });
-    return reply.status(200).send(users);
+    return reply.status(200).send(user);
 });
 
 export default async function handler(
