@@ -6,18 +6,18 @@ const app = Fastify({
 });
 
 app.get("/api/user", async (req, reply) => {
-    const users = prisma.user.findMany();
+    const users = await prisma.user.findMany();
     return reply.status(200).send(users);
 });
 
 app.get("/api/users", async (req, reply) => {
-    const users = prisma.user.findMany();
+    const users = await prisma.user.findMany();
     return reply.status(200).send(users);
 });
 
 app.post("/api/user", async (req, reply) => {
     const { name, age } = req.body as any;
-    const user = prisma.user.create({
+    const user = await prisma.user.create({
         data: {
             name, age
         }
