@@ -7,8 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Client{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  phone String
+}
+
 model User{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   age Int
+}
+
+model Vehicle{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  client_id String
+  plate String
+  model String
+  brand String
+  year String
+  chassis String? //o ponto ? significa que é opcional colcar o numero do chassi, vamos supor que esteja riscado o chassi e não da pra saber, então pula
+  color String[] // a chave [] indica uma coleção de strings
 }
