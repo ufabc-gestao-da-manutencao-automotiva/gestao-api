@@ -43,3 +43,19 @@ model Approach{
   visit_reason String //ex: Ruído no freio traseiro
   origin String  //Conhecido, Google Ads, YouTube, Tok Tok, etc...
 }
+
+model PreOrder {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  id_cliente         String   @db.ObjectId
+  id_veiculo         String   @db.ObjectId
+  id_abordagem       String   @db.ObjectId
+  data               String
+  hora               String
+  nivel_combustivel  String   // Enum: CHEIO, MEIO, BAIXO, VAZIO
+  servicos_solicitados String[] // Lista de serviços
+  observacoes        String?
+  fotos_danos        String[]  // Caminhos das imagens
+  assinatura_cliente Boolean   @default(false)
+  assinatura_consultor Boolean @default(false)
+  finalizado         Boolean   @default(false)
+}
