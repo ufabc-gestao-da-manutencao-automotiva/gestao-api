@@ -14,8 +14,6 @@ model User{
   age Int
 }
 
-
-
 model Client{
   id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
@@ -31,4 +29,24 @@ model Vehicle{
   year String
   chassis String? //o ponto ? significa que é opcional colcar o numero do chassi, vamos supor que esteja riscado o chassi e não da pra saber, então pula
   color String[] // a chave [] indica uma coleção de strings
+}
+
+model Employee{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String
+  area String //Atendente | Mecânico | Eletricista | Gerente | etc...
+  //phone String
+  //email String
+}
+
+model Approach{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  client_id String
+  vehicle_id String
+  employee_id String
+  date String
+  time String
+  approach_type String  //Presencial | Telefone | WhatsApp | etc…
+  visit_reason String //ex: Ruído no freio traseiro
+  origin String  //Conhecido, Google Ads, YouTube, Tok Tok, etc...
 }
