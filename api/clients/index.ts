@@ -16,13 +16,16 @@ app.delete("/api/clients", async (req, reply) => {
 });
 
 app.delete("/api/clients/:clientId", async (req, reply) => {
-    const { clientId } = req.params as any;
+  const { clientId } = req.params as any;
+
   const client = await prisma.client.delete({
     where:{
       id:clientId
     }
   });
+
   return reply.status(200).send(client);
+  
 });
 
 
